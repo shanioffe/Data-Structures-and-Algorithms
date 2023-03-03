@@ -1,0 +1,231 @@
+\iffalse
+
+INSTRUCTIONS: (if this is not lecture1.tex, use the right file name)
+
+  Clip out the ********* INSERT HERE ********* bits below and insert
+appropriate TeX code.  Once you are done with your file, run
+
+  ``latex lecture1.tex''
+
+from a UNIX prompt.  If your LaTeX code is clean, the latex will exit
+back to a prompt.  Once this is done, run
+
+  ``dvips lecture1.dvi''
+
+which should print your file to the nearest printer.  There will be
+residual files called lecture1.log, lecture1.aux, and lecture1.dvi.
+All these can be deleted, but do not delete lecture1.tex.
+\fi
+%
+\documentclass[11pt]{article}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+ 
+\urlstyle{same}
+
+\setlength{\oddsidemargin}{.25in}
+\setlength{\evensidemargin}{.25in}
+\setlength{\textwidth}{6in}
+\setlength{\topmargin}{-0.4in}
+\setlength{\textheight}{8.5in}
+
+\newcommand{\handout}[5]{
+   %\renewcommand{\thepage}{#1-\arabic{page}}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{
+    \hbox to 5.78in { {\bf Data Structures and Algorithms} \hfill #2 }
+       \vspace{4mm}
+       \hbox to 5.78in { {\Large \hfill #5  \hfill} }
+       \vspace{2mm}
+       \hbox to 5.78in { {\it #3 \hfill #4} }
+      }
+   }
+   \end{center}
+   \vspace*{4mm}
+}
+
+\newcommand{\lecture}[3]{\handout{L#1}{#2}{}{}{#1}}
+
+\def\squarebox#1{\hbox to #1{\hfill\vbox to #1{\vfill}}}
+\def\qed{\hspace*{\fill}
+        \vbox{\hrule\hbox{\vrule\squarebox{.667em}\vrule}\hrule}}
+\newenvironment{solution}{\begin{trivlist}\item[]{\bf Solution:}}
+                      {\qed \end{trivlist}}
+\newenvironment{solsketch}{\begin{trivlist}\item[]{\bf Solution Sketch:}}
+                      {\qed \end{trivlist}}
+\newenvironment{proof}{\begin{trivlist}\item[]{\bf Proof:}}
+                      {\qed \end{trivlist}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{Assertion}[theorem]{Assertion}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+%\newtheorem{observation}[theorem]{Observation}
+%\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{assumption}[theorem]{Assumption}
+
+%Put more macros here, as needed.
+\newcommand{\al}{\alpha}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\jac}[2]{\left(\frac{#1}{#2}\right)}
+\newcommand{\set}[1]{\{#1\}}
+
+\def\ppt{{\sf PPT}}
+\def\poly{{\sf poly}}
+\def\negl{{\sf negl}}
+\def\owf{{\sf OWF}}
+\def\owp{{\sf OWP}}
+\def\tdp{{\sf TDP}}
+\def\prg{{\sf PRG}}
+\def\prf{{\sf PRF}}
+
+%end of macros
+\begin{document}
+
+\lecture{COSC  336 		Assignment 3}{}{}
+
+\textbf{Instructions.}
+\begin{enumerate}
+\item Due  date and time: see Blackboard.
+\item This is a team assignment. Work in teams of 2-3 students.  Submit one assignment per team, with the names of all students making the team.
+\item Your programs must be written in Java.
+\item Write your programs neatly - imagine yourself grading your program and see if it is easy to read and understand. 
+At the very beginning present your algorithm in plain English or in pseudo-code (or both).
+Comment your programs reasonably: there is no need to comment lines like "i++" but do include brief comments describing the main purpose of a specific block of lines.
+
+\item  You will submit on \textbf{Blackboard} two files.  
+
+The \textbf{first file} is a pdf file (produced ideally with latex and Overleaf) and it will contain the following:
+\begin{enumerate}
+\item The solutions to the questions in Exercises.
+\item   A short description of your algorithm for the programming task. Focus on how you have modified MERGE 
+\item   A table with the results your program gives  for the three data sets given below. 
+\item   The java code (so that the grader can make observations).
+\end{enumerate}
+
+
+The \textbf{second file} is the .java file containing the java source code, so that the grader can run your program. 
+
+For editing the pdf file, I recommend that you use Latex, see the template files  posted on Blackboard:
+ 
+           assignment-template.tex 	and  assignment-template.pdf
+
+\end{enumerate}
+\newpage
+
+
+\textbf{Exercise 1.}  Analyze the following recurrences using the method that is indicated. In case you use the Master Theorem, state what the corresponding values of $a$, $b$, and $f(n)$ are and how
+you determined which case of the theorem applies. 
+
+\begin{itemize}
+\item  $T(n) = 3 T(\frac{n}{4}) + 3$. Use the Master Theorem to find a $\Theta()$ evaluation, or say "Master Theorem cannot be used", if this is the case.
+\item  $T(n) = 2 T(\frac{n}{2}) + 3n$. Use the Master Theorem to find a $\Theta()$ evaluation, or say "Master Theorem cannot be used", if this is the case.
+\item  $T(n) = 9 T(\frac{n}{3}) + n^2 \log n $. Use the Master Theorem to find a $\Theta()$ evaluation, or say "Master Theorem cannot be used", if this is the case.
+
+\end{itemize}
+\bigskip
+
+\textbf{Exercise 2.}
+\begin{itemize}
+\item $T(n) = 2T(n-1) + 1$, $T(0)=1$.  Use the iteration method to find a $\Theta()$ evaluation for $T(n)$.
+\item $T(n) = T(n-1) + 1$,  $T(0)=1$.  Use the iteration method to find a $\Theta()$ evaluation for $T(n)$.
+\item Give a  $\Theta( \cdot)$ evaluation for the runtime of the following code:
+\begin{verbatim}
+ i= n
+ while(i >=1) {
+    for (j=1;  j <=n;  j++)
+        x=x+1
+    i = i/2
+}    
+\end{verbatim}
+\item Give a  $\Theta( \cdot)$ evaluation for the runtime of the following code:
+\begin{verbatim}
+ i= n
+ while(i >=1) {
+    for (j=1;  j <=i;  j++)
+        x=x+1
+    i = i/2
+}
+\end{verbatim}
+\end{itemize}
+\newpage
+\textbf{Programming Task.}
+
+The input is an array $a_1, a_2, \ldots, a_n$ of numbers.  A  \emph{*-pair} is a pair $(a_i, a_j)$  so that $1 \le i < j \le n$ and $a_i < a_j$. The task is to count the number of *-pairs
+in the array.
+
+For example, for $n = 5$ and input sequence $7, 3, 8, 1, 5$, we have the following *-pairs: $(7,8),  (3, 8),  (3, 5),  (1,5)$.  So, there are $4$ *-pairs. 
+Design an $O(n \log n)$ algorithm which computes the number of *-pairs for a
+given input sequence and implement your program in Java.
+
+It's very easy to come up with an algorithm with run time  $\Theta(n^2)$ (just compare all pairs), but such an algorithm will not get any credit.
+
+The idea of the $O(n \log n)$  algorithm is to modify MERGE-SORT (from page 34 in the textbook)  so that in addition to sorting the array it also counts the number of *-pairs. Thus, your modified MERGE-SORT (A, p, r) will sort the segment of the array $A[p..r]$  (like in the textbook), but in addition to that will return the number of *-pairs in this segment.  The main modification is in the MERGE  procedure, see textbook page 31. In the final for loop, you will also count the *-pairs in which the first component is in $L$, and the second component is in $R$. Keep in mind that $L$ and $R$ are both sorted and therefore if $L[i] < R[j]$, then all pairs $(L[i], R[j]),  (L[i], R[j+1]), \ldots, (L[i], R[r])$ are *-pairs. So with a single comparison you can add the number of these pairs to the counter of *-pairs. Using this observation the modified MERGE can be implemented in $O(n)$ (the same runtime as the standard MERGE).
+\medskip
+
+
+
+
+Test your program and report in a table the results for the following data sets.
+
+Data set 1:  7,3,8,1,5
+
+Data set 2:  The  numbers from the file input-3.4, available on Blackboard. The first line of the line has the number of elements (which is 1000), and the next line has the elements.
+
+Data set 3:  The  numbers from the file input-3.5, available on Blackboard. The first line of the line has the number of elements (which is 10000), and the next line has the elements.
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+  
+\bigskip
+
+
+NOTE 2:  You can find an example of what I mean by  ``Describe an algorithm ..." at
+
+\url{https://www.geeksforgeeks.org/find-the-element-that-appears-once-in-a-sorted-array/}
+
+%\url{https://www.geeksforgeeks.org/cut-all-the-rods-with-some-length-such-that-the-sum-of-cut-off-length-is-maximized/}
+%\medskip
+
+%See the text that starts with \textbf{Approach}.
+
+\end{document}
